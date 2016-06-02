@@ -102,6 +102,28 @@ namespace Facepunch
         }
 
         /// <summary>
+        /// Fetch the read thread list. Must be logged in.
+        /// </summary>
+        /// <param name="start">The amount of threads to skip</param>
+        /// <param name="num">The amount of threads to fetch</param>
+        /// <returns></returns>
+        public FPThread[] GetReadThreads(int start = 0, int num = 25) 
+        {
+            return ApiGET<FPList<FPThread>>("/thread/list/special/read/" + num + "/" + start).Result;
+        }
+
+        /// <summary>
+        /// Fetch the subscribed thread list. Must be logged in.
+        /// </summary>
+        /// <param name="start">The amount of threads to skip</param>
+        /// <param name="num">The amount of threads to fetch</param>
+        /// <returns></returns>
+        public FPThread[] GetSubscribedThreads(int start = 0, int num = 25)
+        {
+            return ApiGET<FPList<FPThread>>("/thread/list/special/subscribed/" + num + "/" + start).Result;
+        }
+
+        /// <summary>
         /// Fetches the specified thread
         /// </summary>
         /// <param name="threadId">The Id of the thread to fetch</param>
