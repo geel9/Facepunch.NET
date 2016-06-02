@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Facepunch.Entities
 {
-    internal class FPList<T> : FPEntity, FPPlaintextEntity where T : FPEntity
+    internal class FPList<T> : FPEntity, IFPPlaintextEntity where T : FPEntity
     {
         public T[] Result;
 

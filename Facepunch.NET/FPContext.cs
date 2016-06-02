@@ -243,7 +243,7 @@ namespace Facepunch
             if (webResponse == null || webResponse.Equals("null"))
                 throw new FPException("Null response from server");
 
-            if (!typeof(FPPlaintextEntity).IsAssignableFrom(typeof(T)))
+            if (!typeof(IFPPlaintextEntity).IsAssignableFrom(typeof(T)))
             {
                 try
                 {
@@ -258,7 +258,7 @@ namespace Facepunch
             }
 
             T plaintextEntity = Activator.CreateInstance<T>();
-            ((FPPlaintextEntity)plaintextEntity).HandlePlaintext(webResponse);
+            ((IFPPlaintextEntity)plaintextEntity).HandlePlaintext(webResponse);
             plaintextEntity.ApplyContext(this);
 
             return plaintextEntity;

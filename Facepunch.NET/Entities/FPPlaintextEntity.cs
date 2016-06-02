@@ -1,6 +1,6 @@
 ﻿namespace Facepunch.Entities
 {
-    public interface FPPlaintextEntity
+    public interface IFPPlaintextEntity
     {
         /// <summary>
         /// Take action upon the specified plaintext
