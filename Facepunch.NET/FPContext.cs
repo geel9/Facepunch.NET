@@ -38,7 +38,6 @@ namespace Facepunch
         /// <summary>
         /// Fetch all forums
         /// </summary>
-        /// <returns></returns>
         public FPForum[] ListForums()
         {
             return ApiGET<FPList<FPForum>>("forum/list").Result;
@@ -48,7 +47,6 @@ namespace Facepunch
         /// Create a forum with the specified name
         /// </summary>
         /// <param name="name"></param>
-        /// <returns></returns>
         public FPForum CreateForum(string name)
         {
             string postData = JsonConvert.SerializeObject(new FPForum() { Name = name });
@@ -59,7 +57,6 @@ namespace Facepunch
         /// Get the specified forum's settings
         /// </summary>
         /// <param name="shortName">The shortName of the forum to fetch the settings of</param>
-        /// <returns></returns>
         public FPForum.FPForumSettings GetForumSettings(string shortName)
         {
             return ApiGET<FPForum.FPForumSettings>("forum/settings/" + shortName + "/get");
@@ -69,7 +66,6 @@ namespace Facepunch
         /// Get the specified forum
         /// </summary>
         /// <param name="shortName">The shortName of the forum to fetch</param>
-        /// <returns></returns>
         public FPForum GetForum(string shortName)
         {
             return ApiGET<FPForum>("forum/info/" + shortName);
@@ -95,7 +91,6 @@ namespace Facepunch
         /// <param name="shortName">The shortname of the forum</param>
         /// <param name="start">The amount of threads to skip</param>
         /// <param name="num">The amount of threads to fetch</param>
-        /// <returns></returns>
         public FPThread[] ListThreads(string shortName, int start = 0, int num = 20)
         {
             return ApiGET<FPList<FPThread>>("thread/list/" + shortName + "/" + num + "/" + start).Result;
@@ -106,7 +101,6 @@ namespace Facepunch
         /// </summary>
         /// <param name="start">The amount of threads to skip</param>
         /// <param name="num">The amount of threads to fetch</param>
-        /// <returns></returns>
         public FPThread[] GetReadThreads(int start = 0, int num = 25) 
         {
             return ApiGET<FPList<FPThread>>("/thread/list/special/read/" + num + "/" + start).Result;
@@ -117,7 +111,6 @@ namespace Facepunch
         /// </summary>
         /// <param name="start">The amount of threads to skip</param>
         /// <param name="num">The amount of threads to fetch</param>
-        /// <returns></returns>
         public FPThread[] GetSubscribedThreads(int start = 0, int num = 25)
         {
             return ApiGET<FPList<FPThread>>("/thread/list/special/subscribed/" + num + "/" + start).Result;
@@ -127,7 +120,6 @@ namespace Facepunch
         /// Fetches the specified thread
         /// </summary>
         /// <param name="threadId">The Id of the thread to fetch</param>
-        /// <returns></returns>
         public FPThread GetThread(int threadId)
         {
             return GetThread(Util.ConvertToBase36(threadId));
@@ -137,7 +129,6 @@ namespace Facepunch
         /// Fetches the specified thread
         /// </summary>
         /// <param name="base36ThreadId">The base-36 Id of the thread to fetch</param>
-        /// <returns></returns>
         public FPThread GetThread(string base36ThreadId)
         {
             return ApiGET<FPThread>("thread/info/" + base36ThreadId);
@@ -150,7 +141,6 @@ namespace Facepunch
         /// <param name="title">The title of the thread</param>
         /// <param name="text">The body of the thread</param>
         /// <param name="icon">The icon of the thread</param>
-        /// <returns></returns>
         public FPThread.FPPostThreadResponse PostThread(string forumName, string title, string text, string icon = "2笠籧ᔢ簧硼⚨㐴ᠣ㙉ល曩䣬〺伤柌⣳㡿ૠ⏠᝻㞌㛚㈊㛧㚊恕垬㝡尳⋈ᤅҨ嘸ࠠ ")
         {
             var newThread = new FPThread.FPPostThreadRequest();
@@ -170,7 +160,6 @@ namespace Facepunch
         /// <param name="threadId">The ID of the thread</param>
         /// <param name="start">The starting index</param>
         /// <param name="num">The amount of posts to fetch</param>
-        /// <returns></returns>
         public FPPost[] ListPosts(int threadId, int start = 0, int num = 20)
         {
             return ListPosts(Util.ConvertToBase36(threadId), start, num);
@@ -182,7 +171,6 @@ namespace Facepunch
         /// <param name="base36Id">The base-36 ID of the thread</param>
         /// <param name="start">The starting index</param>
         /// <param name="num">The amount of posts to fetch</param>
-        /// <returns></returns>
         public FPPost[] ListPosts(string base36Id, int start = 0, int num = 20)
         {
             return ApiGET<FPList<FPPost>>("post/get/" + base36Id + "/" + num + "/" + start).Result;
@@ -194,7 +182,6 @@ namespace Facepunch
         /// Fetch the specified icon
         /// </summary>
         /// <param name="name">The icon name to fetch</param>
-        /// <returns></returns>
         public FPIcon GetIcon(string name)
         {
             var icon = ApiGET<FPIcon>("icon/get/" + name);
@@ -208,7 +195,6 @@ namespace Facepunch
         /// </summary>
         /// <typeparam name="T">The type of entity to expect</typeparam>
         /// <param name="url">The url to fetch</param>
-        /// <returns></returns>
         public T ApiGET<T>(string url) where T : FPEntity
         {
             return ApiRequest<T>(url, "GET", null);
@@ -220,7 +206,6 @@ namespace Facepunch
         /// <typeparam name="T">The type of entity to expect</typeparam>
         /// <param name="url">The url to POST</param>
         /// <param name="postParams">The parameters to POST</param>
-        /// <returns></returns>
         public T ApiPOST<T>(string url, string postParams) where T : FPEntity
         {
             return ApiRequest<T>(url, "POST", postParams);
@@ -232,7 +217,6 @@ namespace Facepunch
         /// <typeparam name="T">The type of entity to expect</typeparam>
         /// <param name="url">The url to query</param>
         /// <param name="postParams"></param>
-        /// <returns></returns>
         internal T ApiRequest<T>(string url, string method, string postParams = null) where T : FPEntity
         {
             url = "http://facepunchforum.azurewebsites.net/api/" + url;

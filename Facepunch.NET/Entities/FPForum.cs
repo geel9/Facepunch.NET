@@ -51,7 +51,6 @@ namespace Facepunch.Entities
         /// <param name="title">The title of the thread</param>
         /// <param name="text">The body of the thread</param>
         /// <param name="icon">The icon of the thread</param>
-        /// <returns></returns>
         public FPThread.FPPostThreadResponse PostThread(string title, string text, string icon = "2笠籧ᔢ簧硼⚨㐴ᠣ㙉ល曩䣬〺伤柌⣳㡿ૠ⏠᝻㞌㛚㈊㛧㚊恕垬㝡尳⋈ᤅҨ嘸ࠠ ")
         {
             return this.Context.PostThread(this.ShortName, title, text, icon);

@@ -13,7 +13,6 @@ namespace Facepunch
         /// Taken from: http://stackoverflow.com/a/10981113
         /// </summary>
         /// <param name="decimalNumber">The number to convert.</param>
-        /// <returns></returns>
         public static string ConvertToBase36(long decimalNumber)
         {
             const int BitsInLong = 64;

@@ -35,9 +35,8 @@ namespace Facepunch.Entities
         public FPForum Forum { get; set; }
 
         /// <summary>
-        /// 
+        /// Calculate the amount of posts in this thread that have not been read
         /// </summary>
-        /// <returns></returns>
         public int GetNumUnreadPosts()
         {
             if (this.Read == null) return -1;
@@ -51,15 +50,9 @@ namespace Facepunch.Entities
         /// <param name="base36Id">The base-36 ID of the thread</param>
         /// <param name="start">The starting index</param>
         /// <param name="num">The amount of posts to fetch</param>
-        /// <returns></returns>
         public FPPost[] ListPosts(int start = 0, int num = 20)
         {
             return this.Context.ListPosts(this.ThreadId, start, num);
-        }
-
-        public void CreateThread()
-        {
-
         }
 
         public class FPThreadRead : FPEntity
