@@ -35,6 +35,17 @@ namespace Facepunch.Entities
         public FPForum Forum { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public int GetNumUnreadPosts()
+        {
+            if (this.Read == null) return -1;
+
+            return this.PostCount - this.Read.PostsRead;
+        }
+
+        /// <summary>
         /// Fetch posts from this thread
         /// </summary>
         /// <param name="base36Id">The base-36 ID of the thread</param>
@@ -53,9 +64,11 @@ namespace Facepunch.Entities
 
         public class FPThreadRead : FPEntity
         {
+            [JsonProperty("PostsRead")]
             public int PostsRead { get; set; }
 
-            public string LastReader { get; set; }
+            [JsonProperty("LastRead")]
+            public string LastRead { get; set; }
         }
 
         public class FPPostThreadRequest
