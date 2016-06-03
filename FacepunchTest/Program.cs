@@ -7,7 +7,7 @@ namespace FacepunchTest
     {
         static void Main(string[] args)
         {
-            string baseIcon = "2笠籧ᔢ簧硼⚨㐴ᠣ㙉ល曩䣬〺伤柌⣳㡿ૠ⏠᝻㞌㛚㈊㛧㚊恕垬㝡尳⋈ᤅҨ嘸ࠠ ";
+            string baseIcon = "ဤ㘌័௧ϸߑ╡瞠䣘ࡌ፮㖍֮ᘒ⍐汮浮㱡唣ॷ嵩勅䆃ᕐ焷〾暴䨁㤓晬⧡ᆿ㽹滹அ㣫⍮ồⵆ㢰滚ᆢغ᭢Р ";
 
             FPContext fp = new FPContext();
             var f = fp.GetForum("facepunchdotnet");
